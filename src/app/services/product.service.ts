@@ -12,7 +12,7 @@ export class ProductService {
   constructor() {
     this.products = productsData;
   }
-
+//TODO: I might need to get products through HttpClient rather than importing directly from a json file.
   getProducts() {
     return this.products;
   }
