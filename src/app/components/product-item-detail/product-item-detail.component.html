@@ -1,0 +1,11 @@
+<div class="detail-container">
+  <img src="{{ product.url }}" class="img" alt="" />
+  <div class="detail-item">
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.price | currency }}</p>
+    <p>{{ product.description }}</p>
+    <a routerLink="/" class="btn btn-outline-primary back-link">
+      Back to products</a
+    >
+  </div>
+</div>
