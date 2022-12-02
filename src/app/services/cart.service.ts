@@ -2,14 +2,17 @@ import { Injectable } from '@angular/core';
 import { CartItem } from '../models/CartItem';
 import { Product } from '../models/Product';
 import productsData from '../../assets/json/products.json';
+import { OrderInfo } from '../models/OrderInfo';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   cartItems: CartItem[] = [];
+  completedOrderInfo: OrderInfo;
 
   constructor() {
+    this.completedOrderInfo = new OrderInfo();
     this.cartItems.push({
       product: productsData[0],
       quantity: 2,
@@ -46,5 +49,9 @@ export class CartService {
       (ci) => ci.product.id == product.id
     );
     foundCartItem!.quantity = quantity;
+  }
+
+  completeOrder(orderInfo: OrderInfo){
+    this.completedOrderInfo = orderInfo;
   }
 }

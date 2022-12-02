@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartItem } from 'src/app/models/CartItem';
+import { OrderInfo } from 'src/app/models/OrderInfo';
 import { Product } from 'src/app/models/Product';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -12,7 +14,7 @@ export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
 
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();
@@ -33,6 +35,12 @@ export class CartComponent implements OnInit {
   onRemoveCartItem(product: Product){
     this.cartService.removeCartItem(product);
     this.cartItems = this.cartService.getCartItems();
+  }
+
+  CompleteOrder(orderInfo: OrderInfo){
+    orderInfo.totalCost = this.getCartSum();
+    this.cartService.completeOrder(orderInfo);
+    this.router.navigate(['confirmation']);
   }
 
 }
