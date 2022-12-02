@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OrderInfo } from 'src/app/models/OrderInfo';
 
 @Component({
-  selector: 'app-order-form',
-  templateUrl: './order-form.component.html',
-  styleUrls: ['./order-form.component.css'],
+  selector: 'app-checkout-form',
+  templateUrl: './checkout-form.component.html',
+  styleUrls: ['./checkout-form.component.css'],
 })
-export class OrderFormComponent {
+export class CheckoutFormComponent {
   fullName: string = '';
   address: string = '';
   creditCardNumber: string = '';

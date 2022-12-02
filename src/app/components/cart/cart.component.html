@@ -16,7 +16,7 @@
       <h3>Total: {{ getCartSum() | currency }}</h3>
     </div>
     <div class="cart-panel">
-      <app-order-form (onSubmit)="CompleteOrder($event)"></app-order-form>
+      <app-checkout-form (onSubmit)="CompleteOrder($event)"></app-checkout-form>
     </div>
   </div>
 </ng-template>

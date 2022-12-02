@@ -13,7 +13,7 @@ import { ProductItemDetailComponent } from './components/product-item-detail/pro
 import { FormsModule } from '@angular/forms';
 import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
-import { OrderFormComponent } from './components/order-form/order-form.component';
+import { CheckoutFormComponent } from './components/checkout-form/checkout-form.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { OrderConfirmationComponent } from './components/order-confirmation/orde
     ProductItemDetailComponent,
     AddToCartComponent,
     CartItemComponent,
-    OrderFormComponent,
+    CheckoutFormComponent,
     OrderConfirmationComponent
   ],
   imports: [
