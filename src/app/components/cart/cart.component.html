@@ -9,7 +9,9 @@
     <div class="cart-panel">
       <app-cart-item
         *ngFor="let cartItem of cartItems"
-        [cartItem]="cartItem"
+        [product]="cartItem.product"
+        [quantity]="cartItem.quantity"
+        (removeCartItem)="onRemoveCartItem($event)"
       ></app-cart-item>
       <h3>Total: {{ getCartSum() | currency }}</h3>
     </div>

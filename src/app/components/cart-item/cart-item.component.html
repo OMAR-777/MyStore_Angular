@@ -1,8 +1,10 @@
 <div class="cart-item">
-    <img src="{{cartItem.product.url}}" alt="">
-    <div class="cart-item-details">
-        <p class="fw-bold">{{ cartItem.product.name }}</p>
-        <p>{{ cartItem.product.price | currency }}</p>
-        <p>Amount: {{ cartItem.quantity }}</p>
-    </div>
+  <img src="{{ product.url }}" alt="" />
+  <div class="cart-item-details">
+    <p class="fw-bold">{{ product.name }}</p>
+    <p>{{ product.price | currency }}</p>
+    <p>
+      Amount: <input type="number" class="number-input" [(ngModel)]="quantity" name=" quantity" (ngModelChange)="onQuantityChange()" />
+    </p>
+  </div>
 </div>

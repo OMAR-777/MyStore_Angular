@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/models/CartItem';
+import { Product } from 'src/app/models/Product';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -29,6 +30,11 @@ export class CartComponent implements OnInit {
       (cartItem) => (sum += cartItem.product.price * cartItem.quantity)
     );
     return sum;
+  }
+
+  onRemoveCartItem(product: Product){
+    this.cartService.removeCartItem(product);
+    this.cartItems = this.cartService.getCartItems();
   }
 
   onCartSubmit() {

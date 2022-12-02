@@ -3,7 +3,6 @@ import { CartItem } from '../models/CartItem';
 import { Product } from '../models/Product';
 import productsData from '../../assets/json/products.json';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -38,5 +37,14 @@ export class CartService {
       };
       this.cartItems.push(cartItem);
     }
+  }
+  removeCartItem(product: Product) {
+    this.cartItems = this.cartItems.filter((ci) => ci.product.id != product.id);
+  }
+  updateQuantity(product: Product, quantity: number) {
+    let foundCartItem = this.cartItems.find(
+      (ci) => ci.product.id == product.id
+    );
+    foundCartItem!.quantity = quantity;
   }
 }

@@ -7,16 +7,13 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './add-to-cart.component.html',
   styleUrls: ['./add-to-cart.component.css']
 })
-export class AddToCartComponent implements OnInit{
+export class AddToCartComponent{
   @Input() product: Product;
   quantity: number;
 
   constructor(private cartService: CartService){
     this.product = new Product();
     this.quantity = 1;
-  }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   addToCart(){
