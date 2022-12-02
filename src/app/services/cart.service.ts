@@ -19,7 +19,7 @@ export class CartService {
       (c) => c.product.id == product.id
     );
     if (existingCartItem) {
-      existingCartItem.quantity += quantity;
+      existingCartItem.quantity = +existingCartItem.quantity + +quantity;
     } else {
       const cartItem = {
         product,
