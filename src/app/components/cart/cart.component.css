@@ -1,9 +1,3 @@
-.form-margin {
-  margin-bottom: 12px;
-  min-width: 350px;
-}
-
-
 .cart-container {
   display: flex;
   flex-direction: row;

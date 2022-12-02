@@ -13,6 +13,7 @@ import { ProductItemDetailComponent } from './components/product-item-detail/pro
 import { FormsModule } from '@angular/forms';
 import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { OrderFormComponent } from './components/order-form/order-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
     ProductItemComponent,
     ProductItemDetailComponent,
     AddToCartComponent,
-    CartItemComponent
+    CartItemComponent,
+    OrderFormComponent
   ],
   imports: [
     BrowserModule,

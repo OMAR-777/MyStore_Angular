@@ -10,9 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
-  fullName: string = '';
-  address: string = '';
-  creditCardNumber: string = '';
+
 
   constructor(private cartService: CartService) {}
 
@@ -37,16 +35,4 @@ export class CartComponent implements OnInit {
     this.cartItems = this.cartService.getCartItems();
   }
 
-  onCartSubmit() {
-    alert(
-      'fullName: ' +
-        this.fullName +
-        '\n' +
-        'address: ' +
-        this.address +
-        '\n' +
-        'creditCardNumber: ' +
-        this.creditCardNumber
-    );
-  }
 }
