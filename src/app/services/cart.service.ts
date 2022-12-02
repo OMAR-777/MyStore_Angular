@@ -53,5 +53,11 @@ export class CartService {
 
   completeOrder(orderInfo: OrderInfo){
     this.completedOrderInfo = orderInfo;
+    this.resetCart();
   }
+
+  resetCart(){
+    this.cartItems = [];
+  }
+
 }
