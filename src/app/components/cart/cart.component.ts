@@ -9,8 +9,19 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
+  fullName: string = '';
+  address: string = '';
+  creditCardNumber: string = '';
 
   constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.cartItems = this.cartService.getCartItems();
+  }
+
+  isEmpty(): boolean {
+    return this.cartItems.length === 0;
+  }
 
   getCartSum() {
     let sum = 0;
@@ -20,7 +31,16 @@ export class CartComponent implements OnInit {
     return sum;
   }
 
-  ngOnInit(): void {
-    this.cartItems = this.cartService.getCartItems();
+  onCartSubmit() {
+    alert(
+      'fullName: ' +
+        this.fullName +
+        '\n' +
+        'address: ' +
+        this.address +
+        '\n' +
+        'creditCardNumber: ' +
+        this.creditCardNumber
+    );
   }
 }
