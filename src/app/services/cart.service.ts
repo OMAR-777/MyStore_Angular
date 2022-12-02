@@ -51,13 +51,12 @@ export class CartService {
     foundCartItem!.quantity = quantity;
   }
 
-  completeOrder(orderInfo: OrderInfo){
+  completeOrder(orderInfo: OrderInfo) {
     this.completedOrderInfo = orderInfo;
-    this.resetCart();
+    this.clearCart();
   }
 
-  resetCart(){
+  clearCart() {
     this.cartItems = [];
   }
-
 }
