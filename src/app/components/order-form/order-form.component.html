@@ -1,9 +1,10 @@
-<form class="form-margin" (ngSubmit)="onCartSubmit()">
+<form class="form-margin" #orderForm="ngForm" (ngSubmit)="onCartSubmit()">
     <div class="mb-3">
       <label for="fullname">Full Name</label>
       <input
         type="text"
         class="form-control"
+        required
         minlength="3"
         [(ngModel)]="fullName"
         name="fullName"
@@ -15,6 +16,7 @@
       <input
         type="text"
         class="form-control"
+        required
         minlength="6"
         [(ngModel)]="address"
         name="address"
@@ -24,10 +26,10 @@
     <div class="mb-3">
       <label for="address">Credit Card Number</label>
       <input
-        type="number"
         class="form-control"
-        ng-minlength="16"
-        ng-maxlength="16"
+        required
+        minlength="15"
+        maxlength="17"
         [(ngModel)]="creditCardNumber"
         name="creditCardNumber"
         placeholder="(16-digit characters)"
@@ -37,6 +39,6 @@
       </p>
     </div>
     <div class="mb-3">
-      <button class="btn btn-primary">Submit</button>
+      <input type="submit" [disabled]="orderForm.invalid" value="Submit" class="btn btn-primary">
     </div>
   </form>
