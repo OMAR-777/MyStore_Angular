@@ -6,19 +6,26 @@ import { Product } from '../models/Product';
   providedIn: 'root',
 })
 export class CartService {
-
   cartItems: CartItem[] = [];
 
   constructor() {}
 
-  addToCart(product: Product, quantity: number) {
-    if(this.cartItems.find(c => c.product.id == product.id)){
-    }
-    const cartItem = {
-      product,
-      quantity,
-    };
-    this.cartItems.push(cartItem);
+  getCartItems(): CartItem[] {
+    return this.cartItems;
   }
 
+  addToCart(product: Product, quantity: number) {
+    let existingCartItem = this.cartItems.find(
+      (c) => c.product.id == product.id
+    );
+    if (existingCartItem) {
+      existingCartItem.quantity += quantity;
+    } else {
+      const cartItem = {
+        product,
+        quantity,
+      };
+      this.cartItems.push(cartItem);
+    }
+  }
 }
