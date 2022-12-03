@@ -4,9 +4,9 @@
     <h1>{{ product.name }}</h1>
     <p>{{ product.price | currency }}</p>
     <p>{{ product.description }}</p>
-    <app-add-to-cart [product] = "product"></app-add-to-cart>
-    <a routerLink="/" class="back-link">
-      Back to products</a
-    >
+    <app-add-to-cart [product]="product"></app-add-to-cart>
+    <div class="back-link">
+      <a routerLink="/" class="">← Back to products</a>
+    </div>
   </div>
 </div>
