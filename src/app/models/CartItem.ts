@@ -5,13 +5,7 @@ export class CartItem {
     quantity: number;
   
     constructor() {
-      this.product = {
-        id: 0,
-        name: '',
-        price: 0,
-        description: '',
-        url: ''
-      }
+      this.product = new Product();
       this.quantity = -1;
     }
   }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../models/CartItem';
 import { Product } from '../models/Product';
-import productsData from '../../assets/json/products.json';
 import { OrderInfo } from '../models/OrderInfo';
 
 @Injectable({

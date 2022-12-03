@@ -1,4 +1,3 @@
-
 export class OrderInfo {
     fullName: string;
     address: string;
