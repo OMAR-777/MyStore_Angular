@@ -33,6 +33,7 @@ export class CartComponent implements OnInit {
   }
 
   onRemoveCartItem(product: Product){
+    alert('Removed from cart!');
     this.cartService.removeCartItem(product);
     this.cartItems = this.cartService.getCartItems();
   }
