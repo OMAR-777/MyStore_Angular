@@ -13,14 +13,6 @@ export class CartService {
 
   constructor() {
     this.completedOrderInfo = new OrderInfo();
-    this.cartItems.push({
-      product: productsData[0],
-      quantity: 2,
-    });
-    this.cartItems.push({
-      product: productsData[1],
-      quantity: 1,
-    });
   }
 
   getCartItems(): CartItem[] {
