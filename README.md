@@ -15,6 +15,8 @@ the application reflects the same user experience as that of a real-world e-comm
 * **Checkout form**, which collects information about the user (e.g., name, address, payment details, etc.)
 * **Order confirmation page**, which shows the outcome after the user completes the checkout process (i.e., submits the checkout form)
 
+![MyStore shopping flow](shoppingflow.gif)
+
 
 ## Instructions
 ### 1. Clone the repository
