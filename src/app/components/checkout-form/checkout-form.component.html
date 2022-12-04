@@ -48,13 +48,11 @@
     type="tel"
     class="form-control"
     inputmode="numeric"
-    pattern="[0-9]*"
-    autocomplete="cc-number"
     required
     minlength="16"
-    maxlength="16"
     [(ngModel)]="creditCardNumber"
     (ngModelChange)="creditCardNumberChange.emit($event)"
+    [mask] = "'0000 0000 0000 0000'"
     name="creditCardNumber"
     placeholder="(16-digit numbers)"
     #creditCardNumberInput="ngModel"
@@ -69,11 +67,11 @@
     <div *ngIf="creditCardNumberInput.errors?.['required']">
       Please provide a credit card number.
     </div>
+    <div *ngIf="creditCardNumberInput.errors?.['mask']">
+      Credit card number invalid.
+    </div>
     <div *ngIf="creditCardNumberInput.errors?.['minlength']">
       The credit card number field must contain exactly 16 numbers.
-    </div>
-    <div *ngIf="creditCardNumberInput.errors?.['pattern']">
-      The credit card number field must contain only numbers.
     </div>
   </div>
 </div>

@@ -18,6 +18,7 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { CheckoutFormComponent } from './components/checkout-form/checkout-form.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
