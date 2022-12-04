@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartItem } from 'src/app/models/CartItem';
 import { OrderInfo } from 'src/app/models/OrderInfo';
@@ -12,7 +12,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
-
+  orderInfo: OrderInfo = new OrderInfo();
 
   constructor(private cartService: CartService, private router: Router) {}
 
@@ -32,15 +32,27 @@ export class CartComponent implements OnInit {
     return sum;
   }
 
-  onRemoveCartItem(product: Product){
+  removeCartItem(product: Product){
     alert('Removed from cart!');
     this.cartService.removeCartItem(product);
     this.cartItems = this.cartService.getCartItems();
   }
 
-  CompleteOrder(orderInfo: OrderInfo){
-    orderInfo.totalCost = this.getCartSum();
-    this.cartService.completeOrder(orderInfo);
+  onCartSubmit() {
+    this.CompleteOrder();
+  }
+
+  onQuantityChange(cartItem: CartItem) {
+    if (cartItem.quantity == 0) {
+      this.removeCartItem(cartItem.product);
+    } else {
+      this.cartService.updateQuantity(cartItem.product, cartItem.quantity);
+    }
+  }
+
+  CompleteOrder(){
+    this.orderInfo.cartItems = this.cartItems;
+    this.cartService.completeOrder(this.orderInfo);
     this.router.navigate(['confirmation']);
   }
 

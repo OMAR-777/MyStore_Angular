@@ -4,7 +4,28 @@
     <p class="fw-bold">{{ product.name }}</p>
     <p>{{ product.price | currency }}</p>
     <p>
-      Amount: <input type="number" class="number-input" [(ngModel)]="quantity" name=" quantity" (ngModelChange)="onQuantityChange()" />
+      Amount:
+      <input
+        type="number"
+        required
+        min="0"
+        class="number-input"
+        #quantityInput="ngModel"
+        [(ngModel)]="quantity"
+        name=" quantity[{{ product.id }}]"
+        (ngModelChange)="onQuantityChange()"
+      />
     </p>
+    <div
+      class="text-danger"
+      *ngIf="quantityInput.invalid && quantityInput.dirty"
+    >
+      <div *ngIf="quantityInput.errors?.['required']">
+        Please provide a quantity.
+      </div>
+      <div *ngIf="quantityInput.errors?.['min']">
+        The quantity must be 0 or more.
+      </div>
+    </div>
   </div>
 </div>

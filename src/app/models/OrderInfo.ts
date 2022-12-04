@@ -1,11 +1,15 @@
+import { CartItem } from "./CartItem";
+
 export class OrderInfo {
     fullName: string;
     address: string;
-    totalCost?: number;
+    creditCardNumber: string;
+    cartItems: CartItem[]
   
     constructor() {
       this.fullName = '';
       this.address = '';
-      this.totalCost = -1;
+      this.creditCardNumber = '';
+      this.cartItems = [];
     }
   }

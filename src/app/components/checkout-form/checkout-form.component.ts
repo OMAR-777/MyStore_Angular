@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { ControlContainer, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderInfo } from 'src/app/models/OrderInfo';
 
@@ -6,20 +7,15 @@ import { OrderInfo } from 'src/app/models/OrderInfo';
   selector: 'app-checkout-form',
   templateUrl: './checkout-form.component.html',
   styleUrls: ['./checkout-form.component.css'],
+  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
 export class CheckoutFormComponent {
-  fullName: string = '';
-  address: string = '';
-  creditCardNumber: string = '';
-  @Output() onSubmit: EventEmitter<OrderInfo> = new EventEmitter();
+  @Input() fullName!: string;
+  @Output() fullNameChange = new EventEmitter<string>();
+  @Input() address!: string;
+  @Output() addressChange = new EventEmitter<string>();
+  @Input() creditCardNumber!: string;
+  @Output() creditCardNumberChange = new EventEmitter<string>();
 
   constructor() {}
-
-  onCartSubmit() {
-    let orderInfo: OrderInfo = {
-      fullName: this.fullName,
-      address: this.address,
-    };
-    this.onSubmit.emit(orderInfo);
-  }
 }

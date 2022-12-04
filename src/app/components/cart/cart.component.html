@@ -5,18 +5,30 @@
 </div>
 
 <ng-template #notEmpty>
-  <div class="cart-container">
-    <div class="cart-panel">
-      <app-cart-item
-        *ngFor="let cartItem of cartItems"
-        [product]="cartItem.product"
-        [quantity]="cartItem.quantity"
-        (removeCartItem)="onRemoveCartItem($event)"
-      ></app-cart-item>
-      <h3>Total: {{ getCartSum() | currency }}</h3>
+  <form class="form-margin" #orderForm="ngForm" (ngSubmit)="onCartSubmit()">
+    <div class="cart-container">
+      <div class="cart-panel">
+        <app-cart-item
+          *ngFor="let cartItem of cartItems"
+          [product]="cartItem.product"
+          [quantity]="cartItem.quantity"
+          (onRemoveCartItem)="removeCartItem($event)"
+        ></app-cart-item>
+        
+        
+        <h3>Total: {{ getCartSum() | currency }}</h3>
+      </div>
+      <div class="cart-panel">
+        <app-checkout-form [(fullName)] = "orderInfo.fullName" [(address)] = "orderInfo.address" [(creditCardNumber)] = "orderInfo.creditCardNumber"></app-checkout-form>
+        <div class="mb-3">
+          <input
+            type="submit"
+            [disabled]="orderForm.invalid"
+            value="Submit"
+            class="btn btn-primary"
+          />
+        </div>
+      </div>
     </div>
-    <div class="cart-panel">
-      <app-checkout-form (onSubmit)="CompleteOrder($event)"></app-checkout-form>
-    </div>
-  </div>
+  </form>
 </ng-template>

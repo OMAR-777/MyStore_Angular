@@ -17,4 +17,12 @@ export class OrderConfirmationComponent implements OnInit {
   ngOnInit(): void {
     this.orderInfo = this.cartService.completedOrderInfo;
   }
+
+  getTotalCost() {
+    let sum = 0;
+    this.orderInfo.cartItems.forEach(
+      (cartItem) => (sum += cartItem.product.price * cartItem.quantity)
+    );
+    return sum;
+  }
 }
