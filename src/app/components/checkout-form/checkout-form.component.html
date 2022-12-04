@@ -1,73 +1,79 @@
-
-    <div class="mb-3">
-      <label for="fullname">Full Name</label>
-      <input
-        type="text"
-        class="form-control"
-        required
-        minlength="3"
-        [(ngModel)]="fullName"
-        (ngModelChange) = "fullNameChange.emit($event)"
-        name="fullName"
-        #fullNameInput = "ngModel" 
-        placeholder="(minimum 3 characters)"
-      />
-      <div class="text-danger" *ngIf="fullNameInput.invalid && fullNameInput.dirty">
-        <div *ngIf="fullNameInput.errors?.['required']">
-          Please provide a full name.
-        </div>
-        <div *ngIf="fullNameInput.errors?.['minlength']">
-          The full name must contain at least 3 characters.
-        </div>
-      </div>
-
+<div class="mb-3">
+  <label for="fullname">Full Name</label>
+  <input
+    type="text"
+    class="form-control"
+    required
+    minlength="3"
+    [(ngModel)]="fullName"
+    (ngModelChange)="fullNameChange.emit($event)"
+    name="fullName"
+    #fullNameInput="ngModel"
+    placeholder="(minimum 3 characters)"
+  />
+  <div class="text-danger" *ngIf="fullNameInput.invalid && fullNameInput.dirty">
+    <div *ngIf="fullNameInput.errors?.['required']">
+      Please provide a full name.
     </div>
-    <div class="mb-3">
-      <label for="address">Address</label>
-      <input
-        type="text"
-        class="form-control"
-        required
-        minlength="6"
-        [(ngModel)]="address"
-        (ngModelChange) = "addressChange.emit($event)"
-        name="address"
-        placeholder="(minimum 6 characters)"
-        #addressInput = "ngModel"
-      />
-      <div class="text-danger" *ngIf="addressInput.invalid && addressInput.dirty">
-        <div *ngIf="addressInput.errors?.['required']">
-          Please provide an address.
-        </div>
-        <div *ngIf="addressInput.errors?.['minlength']">
-          The address must contain at least 6 characters.
-        </div>
-      </div>
-
+    <div *ngIf="fullNameInput.errors?.['minlength']">
+      The full name must contain at least 3 characters.
     </div>
-    <div class="mb-3">
-      <label for="creditCardNumber">Credit Card Number</label>
-      <input
-        class="form-control"
-        required
-        minlength="16"
-        maxlength="16"
-        [(ngModel)]="creditCardNumber"
-        (ngModelChange) = "creditCardNumberChange.emit($event)"
-        name="creditCardNumber"
-        placeholder="(16-digit characters)"
-        #creditCardNumberInput = "ngModel"
-      />
-      <p class="text-secondary fst-italic fw-light mb-0">
-        We will never share your payment details with anyone else.
-      </p>
-      <div class="text-danger" *ngIf="creditCardNumberInput.invalid && creditCardNumberInput.dirty">
-        <div *ngIf="creditCardNumberInput.errors?.['required']">
-          Please provide a credit card number.
-        </div>
-        <div *ngIf="creditCardNumberInput.errors?.['minlength']">
-          The credit card number must contain exactly 16 characters.
-        </div>
-      </div>
-
+  </div>
+</div>
+<div class="mb-3">
+  <label for="address">Address</label>
+  <input
+    type="text"
+    class="form-control"
+    required
+    minlength="6"
+    [(ngModel)]="address"
+    (ngModelChange)="addressChange.emit($event)"
+    name="address"
+    placeholder="(minimum 6 characters)"
+    #addressInput="ngModel"
+  />
+  <div class="text-danger" *ngIf="addressInput.invalid && addressInput.dirty">
+    <div *ngIf="addressInput.errors?.['required']">
+      Please provide an address.
     </div>
+    <div *ngIf="addressInput.errors?.['minlength']">
+      The address must contain at least 6 characters.
+    </div>
+  </div>
+</div>
+<div class="mb-3">
+  <label for="creditCardNumber">Credit Card Number</label>
+  <input
+    type="tel"
+    class="form-control"
+    inputmode="numeric"
+    pattern="[0-9]*"
+    autocomplete="cc-number"
+    required
+    minlength="16"
+    maxlength="16"
+    [(ngModel)]="creditCardNumber"
+    (ngModelChange)="creditCardNumberChange.emit($event)"
+    name="creditCardNumber"
+    placeholder="(16-digit numbers)"
+    #creditCardNumberInput="ngModel"
+  />
+  <p class="text-secondary fst-italic fw-light mb-0">
+    We will never share your payment details with anyone else.
+  </p>
+  <div
+    class="text-danger"
+    *ngIf="creditCardNumberInput.invalid && creditCardNumberInput.dirty"
+  >
+    <div *ngIf="creditCardNumberInput.errors?.['required']">
+      Please provide a credit card number.
+    </div>
+    <div *ngIf="creditCardNumberInput.errors?.['minlength']">
+      The credit card number field must contain exactly 16 of only numbers.
+    </div>
+    <div *ngIf="creditCardNumberInput.errors?.['pattern']">
+      The credit card number must have only numbers.
+    </div>
+  </div>
+</div>

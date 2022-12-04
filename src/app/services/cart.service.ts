@@ -20,7 +20,7 @@ export class CartService {
 
   getCartAmount(): number{
     let sum = 0;
-    this.cartItems.forEach(ci => sum+=ci.quantity)
+    this.cartItems.forEach(ci => sum+=+ci.quantity)
     return sum;
   }
 
