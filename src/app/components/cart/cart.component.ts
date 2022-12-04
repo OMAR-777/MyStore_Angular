@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CartItem } from 'src/app/models/CartItem';
 import { OrderInfo } from 'src/app/models/OrderInfo';
 import { Product } from 'src/app/models/Product';
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
   orderInfo: OrderInfo = new OrderInfo();
 
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(private cartService: CartService, private router: Router, private toastr:ToastrService) {}
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();
@@ -33,7 +34,10 @@ export class CartComponent implements OnInit {
   }
 
   removeCartItem(product: Product){
-    alert('Removed from cart!');
+    this.toastr.info(
+      `${product.name} has been removed from cart`,
+      'Removed from Cart!',
+    );
     this.cartService.removeCartItem(product);
     this.cartItems = this.cartService.getCartItems();
   }
